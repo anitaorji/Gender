@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Gender.Application/Gender.Application.csproj" />
+  <Project Path="Gender.Infrastructure/Gender.Infrastructure.csproj" />
+  <Project Path="Gender/Gender.Api.csproj" />
+</Solution>
