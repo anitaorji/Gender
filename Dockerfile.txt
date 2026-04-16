@@ -1,14 +1,19 @@
-# Build stage
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
-WORKDIR /app
+WORKDIR /src
 
+# Copy EVERYTHING first (removes path issues completely)
 COPY . .
-RUN dotnet restore
-RUN dotnet publish -c Release -o out
 
-# Runtime stage
+# Restore
+RUN dotnet restore Gender.Api/Gender.Api.csproj
+
+# Publish
+RUN dotnet publish Gender.Api/Gender.Api.csproj -c Release -o /app/publish
+
+# Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
-COPY --from=build /app/out .
+
+COPY --from=build /app/publish .
 
 ENTRYPOINT ["dotnet", "Gender.Api.dll"]
