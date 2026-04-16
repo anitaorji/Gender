@@ -1,16 +1,12 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy EVERYTHING first (removes path issues completely)
 COPY . .
 
-# Restore
-RUN dotnet restore Gender.Api.csproj
+RUN dotnet restore Gender.Api/Gender.Api.csproj
 
-# Publish
-RUN dotnet publish Gender.Api.csproj -c Release -o /app/publish
+RUN dotnet publish Gender.Api/Gender.Api.csproj -c Release -o /app/publish
 
-# Runtime
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
