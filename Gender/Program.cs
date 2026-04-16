@@ -1,5 +1,4 @@
 using Gender.Application.Interfaces;
-using Gender.Application.Interfaces;
 using Gender.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);

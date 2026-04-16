@@ -15,7 +15,7 @@ namespace Gender.Api.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetGender([FromQuery] string name)
+        public async Task<IActionResult> GetGender([FromQuery] string? name)
         {
             var response = await _genderService.GetGenderAsync(name);
 
